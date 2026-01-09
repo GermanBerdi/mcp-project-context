@@ -1,6 +1,6 @@
 {
   "name": "mcp-project-context",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for managing project context and notes",
   "type": "module",
   "bin": {
