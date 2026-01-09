@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "tsc && chmod +x build/index.js",
+    "rebuild": "rm -rf build && npm run build",
     "watch": "tsc --watch",
     "prepare": "npm run build"
   },

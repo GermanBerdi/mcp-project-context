@@ -5,6 +5,7 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
+import { getToolsList } from "./tools/toolsList.js";
 
 // Create MCP server
 const server = new Server(
@@ -20,25 +21,7 @@ const server = new Server(
 );
 
 // List available tools
-server.setRequestHandler(ListToolsRequestSchema, async () => {
-  return {
-    tools: [
-      {
-        name: "hello_world",
-        description: "Returns a hello world message",
-        inputSchema: {
-          type: "object",
-          properties: {
-            name: {
-              type: "string",
-              description: "Your name (optional)",
-            },
-          },
-        },
-      },
-    ],
-  };
-});
+server.setRequestHandler(ListToolsRequestSchema, getToolsList);
 
 // Handle tool calls
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
