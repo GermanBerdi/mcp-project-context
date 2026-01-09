@@ -49,18 +49,73 @@ npm run build
 
 #### Configure in VS Code
 
-Add this server to your MCP configuration in VS Code (`mcp.json`):
+**Prerequisites:**
+- Your organization must have MCP (Model Context Protocol) enabled for your account
+- Have GitHub Copilot extension installed in VS Code
 
+**Step-by-step to add the MCP server:**
+
+1. **Open the command palette**: 
+   - Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS)
+
+2. **Search for the MCP command**:
+   - Type "MCP: Add Server" and select it
+
+3. **Configure the server**:
+   - Server name: `project-context`
+   - Type: `stdio`
+   - Command and arguments depending on your environment:
+
+**For Windows (running from WSL):**
 ```json
 {
-  "mcpServers": {
+  "servers": {
     "project-context": {
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-project-context/build/index.js"]
+      "type": "stdio",
+      "command": "wsl",
+      "args": [
+        "node",
+        "/home/YOUR_USER/path/to/mcp-project-context/build/index.js"
+      ]
     }
   }
 }
 ```
+
+**For Linux/macOS or direct WSL:**
+```json
+{
+  "servers": {
+    "project-context": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/absolute/path/to/mcp-project-context/build/index.js"
+      ]
+    }
+  }
+}
+```
+
+4. **Verify the configuration**:
+   - The file is automatically saved to:
+     - Windows: `C:\Users\YOUR_USER\AppData\Roaming\Code\User\mcp.json`
+     - Linux/macOS: `~/.config/Code/User/mcp.json`
+
+5. **Verify the server is active**:
+   - Go to the extensions view in VS Code
+   - Look for the **"MCP SERVERS"** section
+   - You should see `project-context` listed there
+   - If it shows an error icon, verify the paths and that the build is up to date
+
+6. **Allow server usage**:
+   - The first time Copilot uses a server tool, it will ask for permission
+   - You can select "Allow" or "Always Allow" to avoid confirming each time
+
+7. **Test that it works**:
+   - Open GitHub Copilot chat
+   - Ask: "use hello_world to greet someone"
+   - If everything is configured correctly, you'll receive a greeting from the server
 
 #### Available Tools
 
@@ -162,18 +217,73 @@ npm run build
 
 #### Configurar en VS Code
 
-Agrega este servidor a tu configuración de MCP en VS Code (`mcp.json`):
+**Requisitos previos:**
+- Tu organización debe tener habilitado MCP (Model Context Protocol) para tu cuenta
+- Tener instalada la extensión de GitHub Copilot en VS Code
 
+**Paso a paso para agregar el servidor MCP:**
+
+1. **Abrir la paleta de comandos**: 
+   - Presiona `Ctrl+Shift+P` (Windows/Linux) o `Cmd+Shift+P` (macOS)
+
+2. **Buscar el comando MCP**:
+   - Escribe "MCP: Add Server" y selecciónalo
+
+3. **Configurar el servidor**:
+   - Nombre del servidor: `project-context`
+   - Tipo: `stdio`
+   - Comando y argumentos según tu entorno:
+
+**Para Windows (ejecutando desde WSL):**
 ```json
 {
-  "mcpServers": {
+  "servers": {
     "project-context": {
-      "command": "node",
-      "args": ["/ruta/absoluta/a/mcp-project-context/build/index.js"]
+      "type": "stdio",
+      "command": "wsl",
+      "args": [
+        "node",
+        "/home/TU_USUARIO/ruta/a/mcp-project-context/build/index.js"
+      ]
     }
   }
 }
 ```
+
+**Para Linux/macOS o WSL directo:**
+```json
+{
+  "servers": {
+    "project-context": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/ruta/absoluta/a/mcp-project-context/build/index.js"
+      ]
+    }
+  }
+}
+```
+
+4. **Verificar la configuración**:
+   - El archivo se guarda automáticamente en:
+     - Windows: `C:\Users\TU_USUARIO\AppData\Roaming\Code\User\mcp.json`
+     - Linux/macOS: `~/.config/Code/User/mcp.json`
+
+5. **Verificar que el servidor está activo**:
+   - Ve a la vista de extensiones en VS Code
+   - Busca la sección **"MCP SERVERS"**
+   - Deberías ver `project-context` listado allí
+   - Si aparece con un ícono de error, verifica los paths y que el build esté actualizado
+
+6. **Permitir el uso del servidor**:
+   - La primera vez que Copilot use una herramienta del servidor, te pedirá permiso
+   - Puedes seleccionar "Allow" o "Always Allow" para no tener que confirmar cada vez
+
+7. **Probar que funciona**:
+   - Abre el chat de GitHub Copilot
+   - Pregunta: "usa hello_world para saludar a alguien"
+   - Si todo está bien configurado, recibirás un saludo del servidor
 
 #### Herramientas disponibles
 
