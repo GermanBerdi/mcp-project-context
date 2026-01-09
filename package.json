@@ -1,0 +1,26 @@
+{
+  "name": "mcp-project-context",
+  "version": "1.0.0",
+  "description": "MCP server for managing project context and notes",
+  "type": "module",
+  "bin": {
+    "mcp-project-context": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "watch": "tsc --watch",
+    "prepare": "npm run build"
+  },
+  "keywords": ["mcp", "context", "notes", "projects"],
+  "author": "",
+  "license": "MIT",
+  "files": ["build"],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "typescript": "^5.9.3"
+  }
+}
