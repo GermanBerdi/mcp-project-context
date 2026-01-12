@@ -12,6 +12,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { healthCheckTool } from "./tools/health-check/health-check.js";
 import { createNoteTool } from "./tools/notes/create-note-tool.js";
+import { listNotesTool } from "./tools/notes/list-notes-tool.js";
 import { createProjectTool } from "./tools/projects/create-project.js";
 import { getProjectByIdTool } from "./tools/projects/get-project-by-id-tool.js";
 import { listProjectsTool } from "./tools/projects/list-projects-tool.js";
@@ -39,6 +40,7 @@ const mcpServer = new McpServer({
 
 mcpServer.registerTool(healthCheckTool.toolName, healthCheckTool.config, healthCheckTool.cb);
 mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNoteTool.cb);
+mcpServer.registerTool(listNotesTool.toolName, listNotesTool.config, listNotesTool.cb);
 mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, createProjectTool.cb);
 mcpServer.registerTool(getProjectByIdTool.toolName, getProjectByIdTool.config, getProjectByIdTool.cb);
 mcpServer.registerTool(listProjectsTool.toolName, listProjectsTool.config, listProjectsTool.cb);

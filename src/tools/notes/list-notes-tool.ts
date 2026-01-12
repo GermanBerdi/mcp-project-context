@@ -1,0 +1,42 @@
+import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
+
+import * as services from "../../services/services.js";
+
+import * as models from "../../models/models.js";
+
+const toolName = "list_notes";
+
+const config: models.types.mcpServer.ToolConfig<typeof models.schemas.notes.listByProjectIdReq> = {
+  description:
+    "Retrieves all notes associated with a specific project from the database. Returns an array of notes including their content, timestamps, and IDs. Use this to load project context at the beginning of a session or to review all documentation for a project.",
+  inputSchema: models.schemas.notes.listByProjectIdReq,
+};
+
+const cb: ToolCallback<typeof models.schemas.notes.listByProjectIdReq> = async (params) => {
+  try {
+    const notes = await services.notes.getByProjectId(params.project_id);
+
+    const contentData: models.types.mcpServer.contentData<models.types.notes.Row[]> = {
+      success: true,
+      httpCode: models.enums.HttpStatus.OK,
+      message: `Retrieved ${notes.length} note(s) for project ID ${params.project_id}`,
+      data: notes,
+    };
+
+    return services.mcpServer.buildContent(contentData);
+  } catch (error: unknown) {
+    const errorData: models.types.mcpServer.errorData = {
+      success: false,
+      httpCode: models.enums.HttpStatus.InternalServerError,
+      message: "Failed to list notes",
+      error: error instanceof Error ? error.message : String(error),
+    };
+    return services.mcpServer.buildError(errorData);
+  }
+};
+
+export const listNotesTool = {
+  toolName,
+  config,
+  cb,
+};
