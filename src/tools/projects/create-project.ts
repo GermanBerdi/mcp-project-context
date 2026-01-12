@@ -1,5 +1,4 @@
 import type { ToolCallback } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 
 import * as services from "../../services/services.js";
 
@@ -8,7 +7,7 @@ import * as models from "../../models/models.js";
 const toolName = "create_project";
 
 const config: models.types.mcpServer.ToolConfig<typeof models.schemas.projects.createReq> = {
-  description: "Creates a new project to manage AI agent context. This tool initializes a project container to store notes, context, and progress details, enabling the AI agent to maintain continuity across sessions. The project acts as a knowledge base that the AI references to understand the current state, decisions, and ongoing work without requiring full explanations on each interaction.",
+  description: "Creates a new project in the database with a name, description, and optional status. Use this to initialize a project for tracking context, notes, and progress. Projects help maintain continuity across AI agent sessions.",
   inputSchema: models.schemas.projects.createReq,
 };
 
@@ -16,7 +15,7 @@ const cb: ToolCallback<typeof models.schemas.projects.createReq> = async (params
   try {
     const project = await services.projects.create(params);
     
-    const contentData: models.types.mcpServer.contentData<models.types.projects.CreateReq> = {
+    const contentData: models.types.mcpServer.contentData<models.types.projects.Row> = {
       success: true,
       httpCode: models.enums.HttpStatus.Created,
       message: `Project '${project.project_name}' created successfully`,

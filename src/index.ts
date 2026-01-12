@@ -12,6 +12,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { healthCheckTool } from "./tools/health-check/health-check.js";
 import { createProjectTool } from "./tools/projects/create-project.js";
+import { listProjectsTool } from "./tools/projects/list-projects-tool.js";
 import { pool, initPool } from "./db/connection.js";
 
 interface NowRow extends RowDataPacket {
@@ -35,7 +36,7 @@ const mcpServer = new McpServer({
 
 mcpServer.registerTool(healthCheckTool.toolName, healthCheckTool.config, healthCheckTool.cb);
 mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, createProjectTool.cb);
-
+mcpServer.registerTool(listProjectsTool.toolName, listProjectsTool.config, listProjectsTool.cb);
 
 const main = async () => {
   initPool();
