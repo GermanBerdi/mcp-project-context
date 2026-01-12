@@ -11,6 +11,7 @@ import type { RowDataPacket } from "mysql2";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { healthCheckTool } from "./tools/health-check/health-check.js";
+import { createDatabaseConnectionTool } from "./tools/database-connections/create-database-connection-tool.js";
 import { createNoteTool } from "./tools/notes/create-note-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
 import { createProjectTool } from "./tools/projects/create-project.js";
@@ -39,6 +40,11 @@ const mcpServer = new McpServer({
 });
 
 mcpServer.registerTool(healthCheckTool.toolName, healthCheckTool.config, healthCheckTool.cb);
+mcpServer.registerTool(
+  createDatabaseConnectionTool.toolName,
+  createDatabaseConnectionTool.config,
+  createDatabaseConnectionTool.cb,
+);
 mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNoteTool.cb);
 mcpServer.registerTool(listNotesTool.toolName, listNotesTool.config, listNotesTool.cb);
 mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, createProjectTool.cb);
