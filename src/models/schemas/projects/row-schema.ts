@@ -38,7 +38,7 @@ const fields = z
     description: description,
     project_status,
     created_at,
-    updated_at, 
+    updated_at,
   })
   .describe("Represents a single row in the projects database table with all key project attributes.");
 

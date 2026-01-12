@@ -15,6 +15,7 @@ This MCP server allows you to store and access context notes from different proj
 ### 💡 What is it for?
 
 Imagine you're working on multiple projects and want your AI assistant to have access to:
+
 - Project architecture notes
 - Important technical decisions
 - Business context
@@ -50,12 +51,13 @@ npm run build
 #### Configure in VS Code
 
 **Prerequisites:**
+
 - Your organization must have MCP (Model Context Protocol) enabled for your account
 - Have GitHub Copilot extension installed in VS Code
 
 **Step-by-step to add the MCP server:**
 
-1. **Open the command palette**: 
+1. **Open the command palette**:
    - Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS)
 
 2. **Search for the MCP command**:
@@ -67,31 +69,28 @@ npm run build
    - Command and arguments depending on your environment:
 
 **For Windows (running from WSL):**
+
 ```json
 {
   "servers": {
     "project-context": {
       "type": "stdio",
       "command": "wsl",
-      "args": [
-        "node",
-        "/home/YOUR_USER/path/to/mcp-project-context/build/index.js"
-      ]
+      "args": ["node", "/home/YOUR_USER/path/to/mcp-project-context/build/index.js"]
     }
   }
 }
 ```
 
 **For Linux/macOS or direct WSL:**
+
 ```json
 {
   "servers": {
     "project-context": {
       "type": "stdio",
       "command": "node",
-      "args": [
-        "/absolute/path/to/mcp-project-context/build/index.js"
-      ]
+      "args": ["/absolute/path/to/mcp-project-context/build/index.js"]
     }
   }
 }
@@ -183,6 +182,7 @@ Este servidor MCP te permite almacenar y acceder a notas de contexto de diferent
 ### 💡 ¿Para qué sirve?
 
 Imagina que estás trabajando en múltiples proyectos y quieres que tu asistente de IA tenga acceso a:
+
 - Notas de arquitectura del proyecto
 - Decisiones técnicas importantes
 - Contexto de negocio
@@ -218,12 +218,13 @@ npm run build
 #### Configurar en VS Code
 
 **Requisitos previos:**
+
 - Tu organización debe tener habilitado MCP (Model Context Protocol) para tu cuenta
 - Tener instalada la extensión de GitHub Copilot en VS Code
 
 **Paso a paso para agregar el servidor MCP:**
 
-1. **Abrir la paleta de comandos**: 
+1. **Abrir la paleta de comandos**:
    - Presiona `Ctrl+Shift+P` (Windows/Linux) o `Cmd+Shift+P` (macOS)
 
 2. **Buscar el comando MCP**:
@@ -235,31 +236,28 @@ npm run build
    - Comando y argumentos según tu entorno:
 
 **Para Windows (ejecutando desde WSL):**
+
 ```json
 {
   "servers": {
     "project-context": {
       "type": "stdio",
       "command": "wsl",
-      "args": [
-        "node",
-        "/home/TU_USUARIO/ruta/a/mcp-project-context/build/index.js"
-      ]
+      "args": ["node", "/home/TU_USUARIO/ruta/a/mcp-project-context/build/index.js"]
     }
   }
 }
 ```
 
 **Para Linux/macOS o WSL directo:**
+
 ```json
 {
   "servers": {
     "project-context": {
       "type": "stdio",
       "command": "node",
-      "args": [
-        "/ruta/absoluta/a/mcp-project-context/build/index.js"
-      ]
+      "args": ["/ruta/absoluta/a/mcp-project-context/build/index.js"]
     }
   }
 }

@@ -28,7 +28,9 @@ const getAll = async (): Promise<models.types.projects.Row[]> => {
 };
 
 const getById = async (id: models.types.common.Id): Promise<models.types.projects.Row | null> => {
-  const [rows] = await pool.execute<models.types.projects.RowDataPacket[]>("SELECT * FROM projects WHERE id = ?;", [id]);
+  const [rows] = await pool.execute<models.types.projects.RowDataPacket[]>("SELECT * FROM projects WHERE id = ?;", [
+    id,
+  ]);
   return rows.length > 0 ? rows[0] : null;
 };
 

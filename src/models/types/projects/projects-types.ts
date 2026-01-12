@@ -7,4 +7,3 @@ import { rowSchema } from "../../schemas/projects/row-schema.js";
 export type CreateReq = z.infer<typeof createReqSchema>;
 export type Row = z.infer<typeof rowSchema.fields>;
 export type RowDataPacket = Row & DataPacket;
-

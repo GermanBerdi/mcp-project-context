@@ -17,7 +17,7 @@ const cb: ToolCallback = async () => {
       httpCode: models.enums.HttpStatus.OK,
       message: "Project Context MCP Server is running and healthy",
     };
-    
+
     return services.mcpServer.buildContent(contentData);
   } catch (error: unknown) {
     const errorData: models.types.mcpServer.errorData = {

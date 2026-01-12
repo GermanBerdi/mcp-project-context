@@ -7,7 +7,8 @@ import * as models from "../../models/models.js";
 const toolName = "list_projects";
 
 const config: models.types.mcpServer.ToolConfig = {
-  description: "Retrieves all projects from the database. Returns an array with project details including name, description, status, and timestamps. Use this to view available projects, check project statuses, or get an overview of all managed projects.",
+  description:
+    "Retrieves all projects from the database. Returns an array with project details including name, description, status, and timestamps. Use this to view available projects, check project statuses, or get an overview of all managed projects.",
 };
 
 const cb: ToolCallback = async () => {

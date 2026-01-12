@@ -5,7 +5,7 @@ import { HttpStatus } from "../../enums/enums.js";
 
 export type ToolConfig<
   InputArgs extends undefined | ZodRawShapeCompat | AnySchema = undefined,
-  OutputArgs extends undefined | ZodRawShapeCompat | AnySchema = undefined
+  OutputArgs extends undefined | ZodRawShapeCompat | AnySchema = undefined,
 > = {
   title?: string;
   description?: string;
@@ -13,18 +13,18 @@ export type ToolConfig<
   outputSchema?: OutputArgs;
   annotations?: ToolAnnotations;
   _meta?: Record<string, unknown>;
-}
+};
 
 export type contentData<T> = {
   success: true;
   httpCode: HttpStatus;
   message: string;
-  data?: T
-}
-  
+  data?: T;
+};
+
 export type errorData = {
   success: false;
   httpCode: HttpStatus;
   message: string;
   error: string;
-}
+};
