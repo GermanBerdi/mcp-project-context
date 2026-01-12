@@ -25,6 +25,14 @@ const create = async (
   return rows[0];
 };
 
+const getById = async (id: models.types.common.Id): Promise<models.types.databaseConnections.Row | null> => {
+  const [rows] = await pool.execute<models.types.databaseConnections.RowDataPacket[]>(
+    "SELECT * FROM database_connections WHERE id = ?;",
+    [id],
+  );
+  return rows.length > 0 ? rows[0] : null;
+};
+
 const getByProjectId = async (project_id: models.types.common.Id): Promise<models.types.databaseConnections.Row[]> => {
   const [rows] = await pool.execute<models.types.databaseConnections.RowDataPacket[]>(
     "SELECT * FROM database_connections WHERE project_id = ?;",
@@ -35,5 +43,6 @@ const getByProjectId = async (project_id: models.types.common.Id): Promise<model
 
 export const repo = {
   create,
+  getById,
   getByProjectId,
 };
