@@ -12,6 +12,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { healthCheckTool } from "./tools/health-check/health-check.js";
 import { createDatabaseConnectionTool } from "./tools/database-connections/create-database-connection-tool.js";
+import { listDatabaseConnectionsTool } from "./tools/database-connections/list-database-connections-tool.js";
 import { createNoteTool } from "./tools/notes/create-note-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
 import { createProjectTool } from "./tools/projects/create-project.js";
@@ -44,6 +45,11 @@ mcpServer.registerTool(
   createDatabaseConnectionTool.toolName,
   createDatabaseConnectionTool.config,
   createDatabaseConnectionTool.cb,
+);
+mcpServer.registerTool(
+  listDatabaseConnectionsTool.toolName,
+  listDatabaseConnectionsTool.config,
+  listDatabaseConnectionsTool.cb,
 );
 mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNoteTool.cb);
 mcpServer.registerTool(listNotesTool.toolName, listNotesTool.config, listNotesTool.cb);

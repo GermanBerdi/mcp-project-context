@@ -25,6 +25,15 @@ const create = async (
   return rows[0];
 };
 
+const getByProjectId = async (project_id: models.types.common.Id): Promise<models.types.databaseConnections.Row[]> => {
+  const [rows] = await pool.execute<models.types.databaseConnections.RowDataPacket[]>(
+    "SELECT * FROM database_connections WHERE project_id = ?;",
+    [project_id],
+  );
+  return rows;
+};
+
 export const repo = {
   create,
+  getByProjectId,
 };

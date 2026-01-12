@@ -17,6 +17,18 @@ const create = async (
   }
 };
 
+const getByProjectId = async (project_id: model.types.common.Id): Promise<model.types.databaseConnections.Row[]> => {
+  try {
+    const databaseConnections = await repo.databaseConnection.getByProjectId(project_id);
+    return databaseConnections;
+  } catch (error) {
+    const errorMessage = `Error in getByProjectId at database-connections service: ${String(error)}`;
+    console.error(errorMessage);
+    throw new Error.Service(errorMessage);
+  }
+};
+
 export const service = {
   create,
+  getByProjectId,
 };
