@@ -14,6 +14,7 @@ import { healthCheckTool } from "./tools/health-check/health-check.js";
 import { createProjectTool } from "./tools/projects/create-project.js";
 import { getProjectByIdTool } from "./tools/projects/get-project-by-id-tool.js";
 import { listProjectsTool } from "./tools/projects/list-projects-tool.js";
+import { removeProjectTool } from "./tools/projects/remove-project-tool.js";
 import { pool, initPool } from "./db/connection.js";
 
 interface NowRow extends RowDataPacket {
@@ -39,6 +40,7 @@ mcpServer.registerTool(healthCheckTool.toolName, healthCheckTool.config, healthC
 mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, createProjectTool.cb);
 mcpServer.registerTool(getProjectByIdTool.toolName, getProjectByIdTool.config, getProjectByIdTool.cb);
 mcpServer.registerTool(listProjectsTool.toolName, listProjectsTool.config, listProjectsTool.cb);
+mcpServer.registerTool(removeProjectTool.toolName, removeProjectTool.config, removeProjectTool.cb);
 
 const main = async () => {
   initPool();
