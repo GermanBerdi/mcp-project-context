@@ -1,7 +1,7 @@
 import type { ZodRawShapeCompat, AnySchema } from "@modelcontextprotocol/sdk/server/zod-compat.js";
 import type { ToolAnnotations } from "@modelcontextprotocol/sdk/types.js";
 
-import * as enums from "../../enums/enums.js";
+import { HttpStatus } from "../../enums/enums.js";
 
 export type ToolConfig<
   InputArgs extends undefined | ZodRawShapeCompat | AnySchema = undefined,
@@ -15,15 +15,16 @@ export type ToolConfig<
   _meta?: Record<string, unknown>;
 }
 
-export type contentData = {
+export type contentData<T> = {
   success: true;
-  httpCode: enums.HttpStatus;
+  httpCode: HttpStatus;
   message: string;
+  data?: T
 }
   
 export type errorData = {
   success: false;
-  httpCode: enums.HttpStatus;
+  httpCode: HttpStatus;
   message: string;
   error: string;
 }

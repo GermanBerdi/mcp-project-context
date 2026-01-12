@@ -1,7 +1,32 @@
 #!/usr/bin/env node
+import { fileURLToPath } from "url";
+import { dirname, resolve } from "path";
+import dotenv from "dotenv";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: resolve(__dirname, ".env") });
+
+import type { RowDataPacket } from "mysql2";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { healthCheckTool } from "./tools/health-check/health-check.js";
+import { createProjectTool } from "./tools/projects/create-project.js";
+import { pool, initPool } from "./db/connection.js";
+
+interface NowRow extends RowDataPacket {
+  now: Date;
+}
+
+const testDbConnection = async () => {
+  try {
+    const [rows] = await pool.execute<NowRow[]>("SELECT NOW() AS now");
+    console.log("✅ Database connected:", rows[0].now);
+  } catch (err) {
+    console.error("❌ Database connection failed:", err);
+    process.exit(1);
+  }
+};
 
 const mcpServer = new McpServer({
   name: "mcp-project-context",
@@ -9,11 +34,15 @@ const mcpServer = new McpServer({
 });
 
 mcpServer.registerTool(healthCheckTool.toolName, healthCheckTool.config, healthCheckTool.cb);
+mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, createProjectTool.cb);
+
 
 const main = async () => {
+  initPool();
+  await testDbConnection();
   const transport = new StdioServerTransport();
   await mcpServer.connect(transport);
-  console.error("MCP Project Context server running on stdio");
+  console.log("MCP Project Context server running on stdio");
 };
 
 main();

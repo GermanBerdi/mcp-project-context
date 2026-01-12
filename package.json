@@ -7,7 +7,7 @@
     "mcp-project-context": "./build/index.js"
   },
   "scripts": {
-    "build": "tsc && chmod +x build/index.js",
+    "build": "tsc && chmod +x build/index.js && cp .env build/.env",
     "rebuild": "rm -rf build && npm run build",
     "watch": "tsc --watch",
     "prepare": "npm run build",
@@ -29,6 +29,8 @@
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.2",
+    "dotenv": "^17.2.3",
+    "mysql2": "^3.16.0",
     "zod": "^4.3.5"
   },
   "devDependencies": {

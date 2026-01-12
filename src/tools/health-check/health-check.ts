@@ -12,7 +12,7 @@ const config: models.types.mcpServer.ToolConfig = {
 
 const cb: ToolCallback = async () => {
   try {
-    const contentData: models.types.mcpServer.contentData = {
+    const contentData: models.types.mcpServer.contentData<never> = {
       success: true,
       httpCode: models.enums.HttpStatus.OK,
       message: "Project Context MCP Server is running and healthy",
