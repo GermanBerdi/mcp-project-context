@@ -1,7 +1,7 @@
 import { z } from "zod";
 
-export const WorkspaceSchema = z.object({
-  id: z.string(),
+export const workspaceSchema = z.object({
+  id: z.uuid(),
   name: z.string(),
   type: z.string(),
   visibility: z.string(),
@@ -9,6 +9,6 @@ export const WorkspaceSchema = z.object({
   about: z.string().optional(),
 });
 
-export const ListWorkspacesResSchema = z.object({
-  workspaces: z.array(WorkspaceSchema),
+export const listWorkspacesResSchema = z.object({
+  workspaces: z.array(workspaceSchema),
 });

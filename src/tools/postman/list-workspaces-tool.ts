@@ -14,6 +14,7 @@ const config: models.types.mcpServer.ToolConfig = {
 const cb: ToolCallback = async () => {
   try {
     const result = await services.postman.listWorkspaces();
+
     const contentData: models.types.mcpServer.contentData<models.types.postman.ListWorkspacesRes> = {
       success: true,
       httpCode: models.enums.HttpStatus.OK,
