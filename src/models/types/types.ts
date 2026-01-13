@@ -3,5 +3,6 @@ export * as databaseConnections from "./database-connections/database-connection
 export * as mcpServer from "./mcp-server/tool-config-type.js";
 export * as notes from "./notes/notes-types.js";
 export * as postman from "./postman/postman-types.js";
+export * as postmanConfigurations from "./postman-configurations/postman-configurations-types.js";
 export * as projects from "./projects/projects-types.js";
 export * as sqlExec from "./sql-exec/sql-exec-types.js";

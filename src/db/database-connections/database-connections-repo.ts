@@ -33,10 +33,10 @@ const getById = async (id: models.types.common.Id): Promise<models.types.databas
   return rows.length > 0 ? rows[0] : null;
 };
 
-const getByProjectId = async (project_id: models.types.common.Id): Promise<models.types.databaseConnections.Row[]> => {
+const getByProjectId = async (projectId: models.types.common.Id): Promise<models.types.databaseConnections.Row[]> => {
   const [rows] = await pool.execute<models.types.databaseConnections.RowDataPacket[]>(
     "SELECT * FROM database_connections WHERE project_id = ?;",
-    [project_id],
+    [projectId],
   );
   return rows;
 };

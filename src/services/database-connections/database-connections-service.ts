@@ -32,9 +32,9 @@ const getById = async (id: models.types.common.Id): Promise<models.types.databas
   }
 };
 
-const getByProjectId = async (project_id: models.types.common.Id): Promise<models.types.databaseConnections.Row[]> => {
+const getByProjectId = async (projectId: models.types.common.Id): Promise<models.types.databaseConnections.Row[]> => {
   try {
-    const databaseConnections = await repos.databaseConnection.getByProjectId(project_id);
+    const databaseConnections = await repos.databaseConnection.getByProjectId(projectId);
     return databaseConnections;
   } catch (error) {
     const errorMessage = `Error in getByProjectId at database-connections service: ${String(error)}`;

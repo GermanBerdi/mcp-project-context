@@ -15,9 +15,9 @@ const create = async (createReq: models.types.notes.CreateReq): Promise<models.t
   }
 };
 
-const getByProjectId = async (project_id: models.types.common.Id): Promise<models.types.notes.Row[]> => {
+const getByProjectId = async (projectId: models.types.common.Id): Promise<models.types.notes.Row[]> => {
   try {
-    const notes = await repos.note.getByProjectId(project_id);
+    const notes = await repos.note.getByProjectId(projectId);
     return notes;
   } catch (error) {
     const errorMessage = `Error in getByProjectId at notes service: ${String(error)}`;

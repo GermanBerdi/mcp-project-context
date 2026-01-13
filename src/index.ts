@@ -17,6 +17,8 @@ import { createNoteTool } from "./tools/notes/create-note-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
 import { listPostmanCollectionsTool } from "./tools/postman/list-collections-tool.js";
 import { listPostmanWorkspacesTool } from "./tools/postman/list-workspaces-tool.js";
+import { createPostmanConfigurationTool } from "./tools/postman-configurations/create-postman-configuration-tool.js";
+import { listPostmanConfigurationsTool } from "./tools/postman-configurations/list-postman-configurations-tool.js";
 import { createProjectTool } from "./tools/projects/create-project.js";
 import { getProjectByIdTool } from "./tools/projects/get-project-by-id-tool.js";
 import { listProjectsTool } from "./tools/projects/list-projects-tool.js";
@@ -65,6 +67,16 @@ mcpServer.registerTool(
   listPostmanWorkspacesTool.toolName,
   listPostmanWorkspacesTool.config,
   listPostmanWorkspacesTool.cb,
+);
+mcpServer.registerTool(
+  createPostmanConfigurationTool.toolName,
+  createPostmanConfigurationTool.config,
+  createPostmanConfigurationTool.cb,
+);
+mcpServer.registerTool(
+  listPostmanConfigurationsTool.toolName,
+  listPostmanConfigurationsTool.config,
+  listPostmanConfigurationsTool.cb,
 );
 mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, createProjectTool.cb);
 mcpServer.registerTool(getProjectByIdTool.toolName, getProjectByIdTool.config, getProjectByIdTool.cb);
