@@ -15,6 +15,7 @@ import { createDatabaseConnectionTool } from "./tools/database-connections/creat
 import { listDatabaseConnectionsTool } from "./tools/database-connections/list-database-connections-tool.js";
 import { createNoteTool } from "./tools/notes/create-note-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
+import { listPostmanWorkspacesTool } from "./tools/postman/list-workspaces-tool.js";
 import { createProjectTool } from "./tools/projects/create-project.js";
 import { getProjectByIdTool } from "./tools/projects/get-project-by-id-tool.js";
 import { listProjectsTool } from "./tools/projects/list-projects-tool.js";
@@ -54,6 +55,11 @@ mcpServer.registerTool(
 );
 mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNoteTool.cb);
 mcpServer.registerTool(listNotesTool.toolName, listNotesTool.config, listNotesTool.cb);
+mcpServer.registerTool(
+  listPostmanWorkspacesTool.toolName,
+  listPostmanWorkspacesTool.config,
+  listPostmanWorkspacesTool.cb,
+);
 mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, createProjectTool.cb);
 mcpServer.registerTool(getProjectByIdTool.toolName, getProjectByIdTool.config, getProjectByIdTool.cb);
 mcpServer.registerTool(listProjectsTool.toolName, listProjectsTool.config, listProjectsTool.cb);
