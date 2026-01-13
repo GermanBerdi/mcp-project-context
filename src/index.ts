@@ -15,6 +15,7 @@ import { createDatabaseConnectionTool } from "./tools/database-connections/creat
 import { listDatabaseConnectionsTool } from "./tools/database-connections/list-database-connections-tool.js";
 import { createNoteTool } from "./tools/notes/create-note-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
+import { createPostmanCollectionTool } from "./tools/postman/create-collection-tool.js";
 import { listPostmanCollectionsTool } from "./tools/postman/list-collections-tool.js";
 import { listPostmanWorkspacesTool } from "./tools/postman/list-workspaces-tool.js";
 import { createPostmanConfigurationTool } from "./tools/postman-configurations/create-postman-configuration-tool.js";
@@ -58,6 +59,11 @@ mcpServer.registerTool(
 );
 mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNoteTool.cb);
 mcpServer.registerTool(listNotesTool.toolName, listNotesTool.config, listNotesTool.cb);
+mcpServer.registerTool(
+  createPostmanCollectionTool.toolName,
+  createPostmanCollectionTool.config,
+  createPostmanCollectionTool.cb,
+);
 mcpServer.registerTool(
   listPostmanCollectionsTool.toolName,
   listPostmanCollectionsTool.config,
