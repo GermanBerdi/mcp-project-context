@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const collectionSchema = z.object({
+export const listCollectionItemSchema = z.object({
   id: z.uuid(),
   name: z.string(),
   owner: z.string(),
@@ -11,5 +11,5 @@ export const collectionSchema = z.object({
 });
 
 export const listCollectionsResSchema = z.object({
-  collections: z.array(collectionSchema),
+  collections: z.array(listCollectionItemSchema),
 });

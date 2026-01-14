@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const workspaceSchema = z.object({
+export const listWorkspaceItemSchema = z.object({
   id: z.uuid(),
   name: z.string(),
   type: z.string(),
@@ -10,5 +10,5 @@ export const workspaceSchema = z.object({
 });
 
 export const listWorkspacesResSchema = z.object({
-  workspaces: z.array(workspaceSchema),
+  workspaces: z.array(listWorkspaceItemSchema),
 });
