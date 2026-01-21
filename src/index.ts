@@ -24,6 +24,7 @@ import { createProjectTool } from "./tools/projects/create-project.js";
 import { getProjectByIdTool } from "./tools/projects/get-project-by-id-tool.js";
 import { listProjectsTool } from "./tools/projects/list-projects-tool.js";
 import { removeProjectTool } from "./tools/projects/remove-project-tool.js";
+import { updateProjectTool } from "./tools/projects/update-project.js";
 import { executeSqlTool } from "./tools/sql-exec/execute-sql-tool.js";
 import { pool, initPool } from "./db/connection.js";
 
@@ -88,6 +89,7 @@ mcpServer.registerTool(createProjectTool.toolName, createProjectTool.config, cre
 mcpServer.registerTool(getProjectByIdTool.toolName, getProjectByIdTool.config, getProjectByIdTool.cb);
 mcpServer.registerTool(listProjectsTool.toolName, listProjectsTool.config, listProjectsTool.cb);
 mcpServer.registerTool(removeProjectTool.toolName, removeProjectTool.config, removeProjectTool.cb);
+mcpServer.registerTool(updateProjectTool.toolName, updateProjectTool.config, updateProjectTool.cb);
 mcpServer.registerTool(executeSqlTool.toolName, executeSqlTool.config, executeSqlTool.cb);
 
 const main = async () => {
