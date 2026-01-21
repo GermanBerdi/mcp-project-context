@@ -66,9 +66,15 @@ const update = async (
   return rows[0];
 };
 
+const remove = async (id: models.types.common.Id): Promise<void> => {
+  const [result] = await pool.execute<ResultSetHeader>("DELETE FROM database_connections WHERE id = ?;", [id]);
+  if (result.affectedRows !== 1) throw new Error(`Delete failed: ${JSON.stringify(result)}`);
+};
+
 export const repo = {
   create,
   getById,
   getByProjectId,
   update,
+  remove,
 };

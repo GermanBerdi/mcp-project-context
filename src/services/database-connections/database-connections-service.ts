@@ -58,9 +58,22 @@ const update = async (
   }
 };
 
+const remove = async (id: models.types.common.Id): Promise<void> => {
+  try {
+    await getById(id);
+    await repos.databaseConnection.remove(id);
+  } catch (error) {
+    const errorMessage = `Error in remove at database-connections service: ${String(error)}`;
+    console.error(errorMessage);
+    if (error instanceof errors.BaseError) throw error;
+    throw new errors.Service(errorMessage);
+  }
+};
+
 export const service = {
   create,
   getById,
   getByProjectId,
   update,
+  remove,
 };
