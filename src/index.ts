@@ -17,6 +17,7 @@ import { createNoteTool } from "./tools/notes/create-note-tool.js";
 import { getNoteByIdTool } from "./tools/notes/get-note-by-id-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
 import { removeNoteTool } from "./tools/notes/remove-note-tool.js";
+import { updateNoteTool } from "./tools/notes/update-note-tool.js";
 import { createPostmanCollectionTool } from "./tools/postman/create-collection-tool.js";
 import { listPostmanCollectionsTool } from "./tools/postman/list-collections-tool.js";
 import { listPostmanWorkspacesTool } from "./tools/postman/list-workspaces-tool.js";
@@ -64,6 +65,8 @@ mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNot
 mcpServer.registerTool(getNoteByIdTool.toolName, getNoteByIdTool.config, getNoteByIdTool.cb);
 mcpServer.registerTool(listNotesTool.toolName, listNotesTool.config, listNotesTool.cb);
 mcpServer.registerTool(removeNoteTool.toolName, removeNoteTool.config, removeNoteTool.cb);
+mcpServer.registerTool(updateNoteTool.toolName, updateNoteTool.config, updateNoteTool.cb);
+
 mcpServer.registerTool(
   createPostmanCollectionTool.toolName,
   createPostmanCollectionTool.config,

@@ -34,6 +34,24 @@ const getByProjectId = async (projectId: models.types.common.Id): Promise<models
   return rows;
 };
 
+const update = async (updateReq: models.types.notes.UpdateReq): Promise<models.types.notes.Row> => {
+  const { id, ...fields } = updateReq;
+  const keys = Object.keys(fields).filter((key) => fields[key as keyof typeof fields] !== undefined);
+  if (keys.length === 0) throw new Error("No fields to update");
+  const setClause = keys.map((key) => `${key} = ?`).join(", ");
+  const query = `
+    UPDATE notes SET ${setClause}
+    WHERE id = ?;
+  `;
+  const values: (number | string | null | undefined)[] = keys.map((key) => fields[key as keyof typeof fields]);
+  values.push(id);
+  const [result] = await pool.execute<ResultSetHeader>(query, values);
+  if (result.affectedRows !== 1) throw new Error(`Update failed: ${JSON.stringify(result)}`);
+  const [rows] = await pool.execute<models.types.notes.RowDataPacket[]>("SELECT * FROM notes WHERE id = ?;", [id]);
+  if (!rows.length) throw new Error(`Note updated but not found with id ${id}`);
+  return rows[0];
+};
+
 const remove = async (id: models.types.common.Id): Promise<void> => {
   const [result] = await pool.execute<ResultSetHeader>("DELETE FROM notes WHERE id = ?;", [id]);
   if (result.affectedRows !== 1) throw new Error(`Delete failed: ${JSON.stringify(result)}`);
@@ -43,5 +61,6 @@ export const repo = {
   create,
   getById,
   getByProjectId,
+  update,
   remove,
 };

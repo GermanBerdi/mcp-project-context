@@ -39,6 +39,19 @@ const getByProjectId = async (projectId: models.types.common.Id): Promise<models
   }
 };
 
+const update = async (updateReq: models.types.notes.UpdateReq): Promise<models.types.notes.Row> => {
+  try {
+    await getById(updateReq.id);
+    const note = await repos.note.update(updateReq);
+    return note;
+  } catch (error) {
+    const errorMessage = `Error in update at notes service: ${String(error)}`;
+    console.error(errorMessage);
+    if (error instanceof errors.BaseError) throw error;
+    throw new errors.Service(errorMessage);
+  }
+};
+
 const remove = async (id: models.types.common.Id): Promise<void> => {
   try {
     await getById(id);
@@ -55,5 +68,6 @@ export const service = {
   create,
   getById,
   getByProjectId,
+  update,
   remove,
 };
