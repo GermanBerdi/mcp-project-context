@@ -1,13 +1,9 @@
 import { z } from "zod";
-
-import * as commonSchema from "../common/common-schema.js";
+import { rowSchema } from "./row-schema.js";
 
 export const listByProjectIdReqSchema = z
-  .object({
-    project_id: commonSchema.id.describe(
-      "The unique numeric identifier of the project to list notes from. Must be a positive integer that exists in the database.",
-    ),
-  })
+  .object({})
+  .extend(rowSchema.fields.pick({ project_id: true }).shape)
   .describe(
     "Lists all notes associated with a specific project. Required field: 'project_id' (positive integer). Returns an array of all notes for that project.",
   );

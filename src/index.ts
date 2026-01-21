@@ -14,7 +14,9 @@ import { healthCheckTool } from "./tools/health-check/health-check.js";
 import { createDatabaseConnectionTool } from "./tools/database-connections/create-database-connection-tool.js";
 import { listDatabaseConnectionsTool } from "./tools/database-connections/list-database-connections-tool.js";
 import { createNoteTool } from "./tools/notes/create-note-tool.js";
+import { getNoteByIdTool } from "./tools/notes/get-note-by-id-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
+import { removeNoteTool } from "./tools/notes/remove-note-tool.js";
 import { createPostmanCollectionTool } from "./tools/postman/create-collection-tool.js";
 import { listPostmanCollectionsTool } from "./tools/postman/list-collections-tool.js";
 import { listPostmanWorkspacesTool } from "./tools/postman/list-workspaces-tool.js";
@@ -59,7 +61,9 @@ mcpServer.registerTool(
   listDatabaseConnectionsTool.cb,
 );
 mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNoteTool.cb);
+mcpServer.registerTool(getNoteByIdTool.toolName, getNoteByIdTool.config, getNoteByIdTool.cb);
 mcpServer.registerTool(listNotesTool.toolName, listNotesTool.config, listNotesTool.cb);
+mcpServer.registerTool(removeNoteTool.toolName, removeNoteTool.config, removeNoteTool.cb);
 mcpServer.registerTool(
   createPostmanCollectionTool.toolName,
   createPostmanCollectionTool.config,

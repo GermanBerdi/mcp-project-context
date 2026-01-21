@@ -22,6 +22,11 @@ const create = async (createReq: models.types.notes.CreateReq): Promise<models.t
   return rows[0];
 };
 
+const getById = async (id: models.types.common.Id): Promise<models.types.notes.Row | null> => {
+  const [rows] = await pool.execute<models.types.notes.RowDataPacket[]>("SELECT * FROM notes WHERE id = ?;", [id]);
+  return rows.length > 0 ? rows[0] : null;
+};
+
 const getByProjectId = async (projectId: models.types.common.Id): Promise<models.types.notes.Row[]> => {
   const [rows] = await pool.execute<models.types.notes.RowDataPacket[]>("SELECT * FROM notes WHERE project_id = ?;", [
     projectId,
@@ -29,7 +34,14 @@ const getByProjectId = async (projectId: models.types.common.Id): Promise<models
   return rows;
 };
 
+const remove = async (id: models.types.common.Id): Promise<void> => {
+  const [result] = await pool.execute<ResultSetHeader>("DELETE FROM notes WHERE id = ?;", [id]);
+  if (result.affectedRows !== 1) throw new Error(`Delete failed: ${JSON.stringify(result)}`);
+};
+
 export const repo = {
   create,
+  getById,
   getByProjectId,
+  remove,
 };
