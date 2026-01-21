@@ -41,8 +41,34 @@ const getByProjectId = async (projectId: models.types.common.Id): Promise<models
   return rows;
 };
 
+const update = async (
+  updateReq: models.types.databaseConnections.UpdateReq,
+): Promise<models.types.databaseConnections.Row> => {
+  const { id, ...fields } = updateReq;
+  const keys = Object.keys(fields).filter((key) => fields[key as keyof typeof fields] !== undefined);
+  if (keys.length === 0) throw new Error("No fields to update");
+  const setClause = keys.map((key) => `${key} = ?`).join(", ");
+  const query = `
+    UPDATE database_connections SET ${setClause}
+    WHERE id = ?;
+  `;
+  const values: (number | string | Record<string, any> | null | undefined)[] = keys.map(
+    (key) => fields[key as keyof typeof fields],
+  );
+  values.push(id);
+  const [result] = await pool.execute<ResultSetHeader>(query, values);
+  if (result.affectedRows !== 1) throw new Error(`Update failed: ${JSON.stringify(result)}`);
+  const [rows] = await pool.execute<models.types.databaseConnections.RowDataPacket[]>(
+    "SELECT * FROM database_connections WHERE id = ?;",
+    [id],
+  );
+  if (!rows.length) throw new Error(`Database connection updated but not found with id ${id}`);
+  return rows[0];
+};
+
 export const repo = {
   create,
   getById,
   getByProjectId,
+  update,
 };

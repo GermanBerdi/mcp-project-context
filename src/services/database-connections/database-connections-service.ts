@@ -43,8 +43,24 @@ const getByProjectId = async (projectId: models.types.common.Id): Promise<models
   }
 };
 
+const update = async (
+  updateReq: models.types.databaseConnections.UpdateReq,
+): Promise<models.types.databaseConnections.Row> => {
+  try {
+    await getById(updateReq.id);
+    const databaseConnection = await repos.databaseConnection.update(updateReq);
+    return databaseConnection;
+  } catch (error) {
+    const errorMessage = `Error in update at database-connections service: ${String(error)}`;
+    console.error(errorMessage);
+    if (error instanceof errors.BaseError) throw error;
+    throw new errors.Service(errorMessage);
+  }
+};
+
 export const service = {
   create,
   getById,
   getByProjectId,
+  update,
 };

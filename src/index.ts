@@ -14,6 +14,7 @@ import { healthCheckTool } from "./tools/health-check/health-check.js";
 import { createDatabaseConnectionTool } from "./tools/database-connections/create-database-connection-tool.js";
 import { getDatabaseConnectionByIdTool } from "./tools/database-connections/get-database-connection-by-id-tool.js";
 import { listDatabaseConnectionsTool } from "./tools/database-connections/list-database-connections-tool.js";
+import { updateDatabaseConnectionTool } from "./tools/database-connections/update-database-connection-tool.js";
 import { createNoteTool } from "./tools/notes/create-note-tool.js";
 import { getNoteByIdTool } from "./tools/notes/get-note-by-id-tool.js";
 import { listNotesTool } from "./tools/notes/list-notes-tool.js";
@@ -66,6 +67,11 @@ mcpServer.registerTool(
   listDatabaseConnectionsTool.toolName,
   listDatabaseConnectionsTool.config,
   listDatabaseConnectionsTool.cb,
+);
+mcpServer.registerTool(
+  updateDatabaseConnectionTool.toolName,
+  updateDatabaseConnectionTool.config,
+  updateDatabaseConnectionTool.cb,
 );
 mcpServer.registerTool(createNoteTool.toolName, createNoteTool.config, createNoteTool.cb);
 mcpServer.registerTool(getNoteByIdTool.toolName, getNoteByIdTool.config, getNoteByIdTool.cb);
