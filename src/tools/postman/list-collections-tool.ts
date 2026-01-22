@@ -8,7 +8,7 @@ const toolName = "list_postman_collections";
 
 const config: models.types.mcpServer.ToolConfig<typeof models.schemas.postman.listCollectionsReq> = {
   description:
-    "Retrieves all collections from a specific Postman workspace. Returns an array of collections with their ID, name, owner, timestamps, and visibility. Use this to discover available collections within a workspace.",
+    "Retrieves all Postman collections from the specified workspace, using the configured API key. Provide the workspace_id (UUID) to list its collections. Returns an array of collections with their ID, name, owner, timestamps, UID, and visibility. Use this to discover available collections within a workspace you have access to.",
   inputSchema: models.schemas.postman.listCollectionsReq,
 };
 
