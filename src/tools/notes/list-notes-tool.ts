@@ -14,13 +14,13 @@ const config: models.types.mcpServer.ToolConfig<typeof models.schemas.notes.list
 
 const cb: ToolCallback<typeof models.schemas.notes.listByProjectIdReq> = async (params) => {
   try {
-    const notes = await services.notes.getByProjectId(params.project_id);
+    const result = await services.notes.getByProjectId(params.project_id, params.pagination);
 
-    const contentData: models.types.mcpServer.contentData<models.types.notes.Row[]> = {
+    const contentData: models.types.mcpServer.contentData<models.types.util.PaginatedData<models.types.notes.Row>> = {
       success: true,
       httpCode: models.enums.HttpStatus.OK,
-      message: `Retrieved ${notes.length} note(s) for project ID ${params.project_id}`,
-      data: notes,
+      message: `Retrieved ${result.pagination.itemsCount} note(s) for project ID ${params.project_id} (page ${result.pagination.page} of ${result.pagination.totalPages})`,
+      data: result,
     };
 
     return services.mcpServer.buildContent(contentData);

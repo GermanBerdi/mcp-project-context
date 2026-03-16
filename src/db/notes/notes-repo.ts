@@ -4,6 +4,8 @@ import { pool } from "../connection.js";
 
 import * as models from "../../models/models.js";
 
+import * as utils from "../../utils/utils.js";
+
 const create = async (createReq: models.types.notes.CreateReq): Promise<models.types.notes.Row> => {
   const keys = Object.keys(createReq);
   const columns = keys.join(", ");
@@ -27,11 +29,20 @@ const getById = async (id: models.types.common.Id): Promise<models.types.notes.R
   return rows.length > 0 ? rows[0] : null;
 };
 
-const getByProjectId = async (projectId: models.types.common.Id): Promise<models.types.notes.Row[]> => {
-  const [rows] = await pool.execute<models.types.notes.RowDataPacket[]>("SELECT * FROM notes WHERE project_id = ?;", [
-    projectId,
-  ]);
-  return rows;
+const getByProjectId = async (
+  projectId: models.types.common.Id,
+  pagination: models.types.common.Pagination,
+): Promise<models.types.common.TotalAndData<models.types.notes.Row>> => {
+  const limit = utils.sql.pagination.buildSQLLimit(pagination);
+  const [totalResult] = await pool.execute<models.types.common.TotalRowDataPacket[]>(
+    "SELECT COUNT(id) as total FROM notes WHERE project_id = ?;",
+    [projectId],
+  );
+  const [rows] = await pool.execute<models.types.notes.RowDataPacket[]>(
+    `SELECT * FROM notes WHERE project_id = ? ORDER BY id ${limit};`,
+    [projectId],
+  );
+  return { total: totalResult[0].total, data: rows };
 };
 
 const update = async (updateReq: models.types.notes.UpdateReq): Promise<models.types.notes.Row> => {

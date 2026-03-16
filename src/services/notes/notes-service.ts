@@ -4,6 +4,8 @@ import * as repos from "../../db/repos.js";
 
 import * as models from "../../models/models.js";
 
+import * as utils from "../../utils/utils.js";
+
 const create = async (createReq: models.types.notes.CreateReq): Promise<models.types.notes.Row> => {
   try {
     const note = await repos.note.create(createReq);
@@ -28,10 +30,13 @@ const getById = async (id: models.types.common.Id): Promise<models.types.notes.R
   }
 };
 
-const getByProjectId = async (projectId: models.types.common.Id): Promise<models.types.notes.Row[]> => {
+const getByProjectId = async (
+  projectId: models.types.common.Id,
+  pagination: models.types.common.Pagination,
+): Promise<models.types.util.PaginatedData<models.types.notes.Row>> => {
   try {
-    const notes = await repos.note.getByProjectId(projectId);
-    return notes;
+    const { total, data } = await repos.note.getByProjectId(projectId, pagination);
+    return utils.sql.pagination.buildPaginatedResponse(data, total, pagination);
   } catch (error) {
     const errorMessage = `Error in getByProjectId at notes service: ${String(error)}`;
     console.error(errorMessage);

@@ -6,3 +6,4 @@ export * as postman from "./postman/postman-types.js";
 export * as postmanConfigurations from "./postman-configurations/postman-configurations-types.js";
 export * as projects from "./projects/projects-types.js";
 export * as sqlExec from "./sql-exec/sql-exec-types.js";
+export * as util from "./util/util-types.js";
