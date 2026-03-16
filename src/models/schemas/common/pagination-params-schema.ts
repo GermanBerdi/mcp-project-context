@@ -2,7 +2,7 @@ import { z } from "zod";
 
 const page = z.number().int().min(1).default(1).describe("Page number to retrieve. Starts at 1.");
 
-const pageSize = z
+const page_size = z
   .number()
   .int()
   .min(1)
@@ -13,8 +13,8 @@ const pageSize = z
 export const paginationParamsSchema = z
   .object({
     page,
-    pageSize,
+    page_size,
   })
   .optional()
-  .default({ page: 1, pageSize: 20 })
+  .default({ page: 1, page_size: 20 })
   .describe("Pagination parameters for paginated queries.");

@@ -19,7 +19,7 @@ const cb: ToolCallback<typeof models.schemas.notes.listByProjectIdReq> = async (
     const contentData: models.types.mcpServer.contentData<models.types.util.PaginatedData<models.types.notes.Row>> = {
       success: true,
       httpCode: models.enums.HttpStatus.OK,
-      message: `Retrieved ${result.pagination.itemsCount} note(s) for project ID ${params.project_id} (page ${result.pagination.page} of ${result.pagination.totalPages})`,
+      message: `Retrieved ${result.pagination.items_count} note(s) for project ID ${params.project_id} (page ${result.pagination.page} of ${result.pagination.total_pages})`,
       data: result,
     };
 
