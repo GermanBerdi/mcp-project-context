@@ -35,9 +35,7 @@ En lugar de copiar y pegar estas notas cada vez, este servidor MCP las hace acce
 # Clonar el repositorio
 git clone https://github.com/GermanBerdi/mcp-project-context.git
 cd mcp-project-context
-
-# Instalar dependencias
-npm install
+```
 
 ### ⚙️ Configuración de Variables de Entorno
 
@@ -62,11 +60,13 @@ POSTMAN_API_KEY=tu_api_key_de_postman
 3. Genera una nueva API key
 4. Cópiala y pégala en tu archivo `.env`
 
-### 🔨 Compilar
+### 📦 Instalar dependencias y compilar
 
 ```bash
-npm run build
+npm install
 ```
+
+> **Nota:** Este comando instalará las dependencias y compilará automáticamente el proyecto, generando la carpeta `build/`. Esta carpeta contiene el servidor MCP que será consumido por el agente de IA.
 
 ### 📝 Uso
 
