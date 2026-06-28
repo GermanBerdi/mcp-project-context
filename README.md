@@ -83,7 +83,7 @@ POSTMAN_API_KEY=your_postman_api_key
 - Your organization must have MCP (Model Context Protocol) enabled for your account
 - Have GitHub Copilot extension installed in VS Code
 
-**Step-by-step to add the MCP server:**
+**Step-by-step to add the MCP server for Copilot:**
 
 1. **Open the command palette**:
    - Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS)
@@ -96,33 +96,33 @@ POSTMAN_API_KEY=your_postman_api_key
    - Type: `stdio`
    - Command and arguments depending on your environment:
 
-**For Windows (running from WSL):**
+     ***To make it visible from Windows when the project is hosted in WSL:***
 
-```json
-{
-  "servers": {
-    "project-context": {
-      "type": "stdio",
-      "command": "wsl",
-      "args": ["node", "/home/YOUR_USER/path/to/mcp-project-context/build/index.js"]
-    }
-  }
-}
-```
+     ```json
+     {
+       "servers": {
+         "project-context": {
+           "type": "stdio",
+           "command": "wsl",
+           "args": ["node", "/home/YOUR_USER/path/to/mcp-project-context/build/index.js"]
+         }
+       }
+     }
+     ```
 
-**For Linux/macOS or direct WSL:**
+     ***To use it directly from Linux/macOS or WSL:***
 
-```json
-{
-  "servers": {
-    "project-context": {
-      "type": "stdio",
-      "command": "node",
-      "args": ["/absolute/path/to/mcp-project-context/build/index.js"]
-    }
-  }
-}
-```
+     ```json
+     {
+       "servers": {
+         "project-context": {
+           "type": "stdio",
+           "command": "node",
+           "args": ["/absolute/path/to/mcp-project-context/build/index.js"]
+         }
+       }
+     }
+     ```
 
 4. **Verify the configuration**:
    - The file is automatically saved to:
