@@ -78,41 +78,49 @@ npm install
 - Tener instalada la extensión de GitHub Copilot en VS Code
 
 ##### Escenario 1
+
 - mcp-project-context está clonado en WSL
 - Habilitarlo para Claude Code desde WSL
 - [Ver guía paso a paso](guides/español/escenario-1.md)
 
 ##### Escenario 2
+
 - mcp-project-context está clonado en WSL
 - Habilitarlo para Claude Code desde Windows
 - [Ver guía paso a paso](guides/español/escenario-2.md)
 
 ##### Escenario 3
+
 - mcp-project-context está clonado en WSL
 - Habilitarlo para Copilot desde WSL
 - [Ver guía paso a paso](guides/español/escenario-3.md)
 
 ##### Escenario 4
+
 - mcp-project-context está clonado en WSL
 - Habilitarlo para Copilot desde Windows
 - [Ver guía paso a paso](guides/español/escenario-4.md)
 
 ##### Escenario 5
+
 - mcp-project-context está clonado en Windows
 - Habilitarlo para Claude Code desde WSL
 - [Ver guía paso a paso](guides/español/escenario-5.md)
 
 ##### Escenario 6
+
 - mcp-project-context está clonado en Windows
 - Habilitarlo para Claude Code desde Windows
 - [Ver guía paso a paso](guides/español/escenario-6.md)
 
 ##### Escenario 7
+
 - mcp-project-context está clonado en Windows
 - Habilitarlo para Copilot desde WSL
 - [Ver guía paso a paso](guides/español/escenario-7.md)
 
 ##### Escenario 8
+
 - mcp-project-context está clonado en Windows
 - Habilitarlo para Copilot desde Windows
 - [Ver guía paso a paso](guides/español/escenario-8.md)
@@ -151,10 +159,12 @@ npm install
 La integración con Postman te permite gestionar tus colecciones de API directamente desde tu cliente MCP.
 
 ##### Escenario 1
+
 - Setup completo desde cero
 - [Ver guía paso a paso](guides/español/postman-escenario-1.md)
 
 ##### Escenario 2
+
 - Con workspace y colección existentes
 - [Ver guía paso a paso](guides/español/postman-escenario-2.md)
 

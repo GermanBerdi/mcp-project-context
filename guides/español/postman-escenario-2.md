@@ -1,4 +1,5 @@
 # Postman - Escenario 2
+
 - Con workspace y colección existentes
 
 **Opción 2 - Con workspace y colección existentes:**

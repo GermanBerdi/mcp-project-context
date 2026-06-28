@@ -1,6 +1,7 @@
 # Postman - Escenario 1
+
 - Setup completo desde cero
-**Opción 1 - Setup completo desde cero:**
+  **Opción 1 - Setup completo desde cero:**
 
 1. Configura `POSTMAN_API_KEY` en tu archivo `.env`
 2. Lista los workspaces disponibles usando `list_postman_workspaces`

@@ -78,41 +78,49 @@ npm install
 - Have GitHub Copilot extension installed in VS Code
 
 ##### Scenario 1
+
 - mcp-project-context is cloned in WSL
 - Enable it for Claude Code from WSL
 - [See step-by-step guide](guides/english/scenario-1.md)
 
 ##### Scenario 2
+
 - mcp-project-context is cloned in WSL
 - Enable it for Claude Code from Windows
 - [See step-by-step guide](guides/english/scenario-2.md)
 
 ##### Scenario 3
+
 - mcp-project-context is cloned in WSL
 - Enable it for Copilot from WSL
 - [See step-by-step guide](guides/english/scenario-3.md)
 
 ##### Scenario 4
+
 - mcp-project-context is cloned in WSL
 - Enable it for Copilot from Windows
 - [See step-by-step guide](guides/english/scenario-4.md)
 
 ##### Scenario 5
+
 - mcp-project-context is cloned in Windows
 - Enable it for Claude Code from WSL
 - [See step-by-step guide](guides/english/scenario-5.md)
 
 ##### Scenario 6
+
 - mcp-project-context is cloned in Windows
 - Enable it for Claude Code from Windows
 - [See step-by-step guide](guides/english/scenario-6.md)
 
 ##### Scenario 7
+
 - mcp-project-context is cloned in Windows
 - Enable it for Copilot from WSL
 - [See step-by-step guide](guides/english/scenario-7.md)
 
 ##### Scenario 8
+
 - mcp-project-context is cloned in Windows
 - Enable it for Copilot from Windows
 - [See step-by-step guide](guides/english/scenario-8.md)
@@ -151,10 +159,12 @@ npm install
 The Postman integration allows you to manage your API collections directly from your MCP client.
 
 ##### Scenario 1
+
 - Complete setup from scratch
 - [See step-by-step guide](guides/english/postman-scenario-1.md)
 
 ##### Scenario 2
+
 - With existing workspace and collection
 - [See step-by-step guide](guides/english/postman-scenario-2.md)
 

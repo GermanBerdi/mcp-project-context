@@ -1,4 +1,5 @@
 # Escenario 1
+
 - mcp-project-context está clonado en WSL
 - Habilitarlo para Claude Code desde WSL
 
