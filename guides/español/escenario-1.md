@@ -14,10 +14,10 @@
    claude --version
    ```
 
-3. **Agregar el servidor MCP**:
+3. **Agregar el servidor MCP** (con `--scope user` para que esté disponible en todos los proyectos):
 
    ```bash
-   claude mcp add project-context -- /ruta/a/node /ruta/a/mcp-project-context/build/index.js
+   claude mcp add --scope user project-context -- /ruta/a/node /ruta/a/mcp-project-context/build/index.js
    ```
 
 4. **Comprobar que está en la lista**:
@@ -30,3 +30,6 @@
 
 5. **Verificar el archivo de configuración**:
    - La configuración se guarda en `~/.claude.json`
+
+6. **Reiniciar la sesión de Claude Code**:
+   - Presiona `Ctrl+Shift+P` y ejecuta "Developer: Reload Window" para que VS Code detecte el nuevo servidor MCP
